@@ -1,0 +1,112 @@
+# ----------------------------------------------------------------------
+# Couche 1: Substrate (Database)
+# ----------------------------------------------------------------------
+# Python client for FalkorDB.
+# We chose FalkorDB for its 10k+ multi-tenant graph support in Community Edition.
+falkordb
+
+# FalkorDB runs as a Redis module, so the core Redis client is required.
+redis
+
+# ----------------------------------------------------------------------    
+# Couche 2: Orchestration (Piping)
+# ----------------------------------------------------------------------
+# The core LlamaIndex library for orchestration.
+# This package INCLUDES the core components (like CustomLLM) needed
+# to build our shell command wrapper.
+llama-index
+
+# LlamaIndex integration for our chosen graph database, FalkorDB.
+llama-index-graph-stores-falkordb
+
+# ----------------------------------------------------------------------
+# Utilities
+# ----------------------------------------------------------------------
+# Used to load environment variables (like CLAUDE_CODE_WORKING_DIR)
+# from the .env file.
+python-dotenv
+
+# Settings management for Pydantic v2 (BaseSettings moved to separate package)
+pydantic-settings
+
+# Secure secret storage via the system keyring (DPAPI/Keychain/libsecret)
+keyring
+
+# Used for any direct HTTP calls, if our hooks or services need them.
+httpx
+
+# Cross-platform process management for guardian process monitoring
+psutil
+
+# Windows desktop notifications - ONLY for local development
+# Disabled for production deployment (Linux servers don't support Windows APIs)
+# win10toast
+# ----------------------------------------------------------------------
+# Visualization Server
+# ----------------------------------------------------------------------
+# FastAPI for WebSocket-based visualization server
+fastapi
+
+# ASGI server for running FastAPI
+uvicorn[standard]
+
+# WebSocket support
+websockets
+
+# ----------------------------------------------------------------------
+# Consciousness Embedding Architecture
+# ----------------------------------------------------------------------
+# Sentence transformers for local embedding generation
+# Primary model: all-mpnet-base-v2 (768 dims, CPU-friendly)
+# Alternative to Ollama when not available
+sentence-transformers
+
+# Fast subentity matching with HNSW indices
+# 7x faster than FAISS on CPU, deterministic
+# Disabled for production deployment (requires C++ compilation, not currently used)
+# hnswlib
+
+# SetFit for hierarchical classification
+# 75-85% accuracy, trains in 30s
+setfit
+
+# spaCy for NLP parsing (span extraction, dependency parsing)
+spacy
+
+# Ollama Python client (optional - for nomic-embed-text)
+# Only needed if Ollama server is installed
+# ollama
+
+# ----------------------------------------------------------------------
+# Blockchain & Token Infrastructure (Solana)
+# ----------------------------------------------------------------------
+# Solana Python SDK for SPL token operations
+solana
+solders
+
+# NaCl bindings (libsodium) for sealed box encryption of custody keys
+PyNaCl
+
+# SPL Token program bindings (included in solana/solders packages)
+# Note: spl-token is not a separate Python package
+
+# Anchor framework client for Solana programs
+anchorpy
+
+# Base58 encoding/decoding for Solana addresses
+base58
+
+# JWT/HMAC signing for custody capability tokens
+PyJWT
+
+# ----------------------------------------------------------------------
+# Testing Infrastructure
+# ----------------------------------------------------------------------
+# Core testing framework
+pytest
+
+# JSON report generation for automated test results
+pytest-json-report
+
+# Code coverage measurement for test quality
+pytest-cov
